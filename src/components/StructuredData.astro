@@ -1,0 +1,14 @@
+---
+export interface JsonLdSchema {
+  [key: string]: unknown;
+}
+
+interface Props {
+  schema: JsonLdSchema;
+}
+
+const { schema } = Astro.props;
+const schemaStr = JSON.stringify(schema, null, 2);
+---
+
+<script type="application/ld+json" set:html={schemaStr}></script>

@@ -1,0 +1,5 @@
+# Security Headers
+/*.html
+  X-Robots-Tag: noindex, nofollow
+/*/
+  X-Robots-Tag: noindex, nofollow

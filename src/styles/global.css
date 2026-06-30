@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.heading-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E2937 100%);
+}
+
+.domain-name {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.value-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+}
+
+.nav-link {
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #B45309;
+}

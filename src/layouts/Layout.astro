@@ -1,0 +1,187 @@
+---
+import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import StructuredData from '../components/StructuredData.astro';
+import type { JsonLdSchema } from '../components/StructuredData.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  schema?: JsonLdSchema;
+}
+
+const { title, description, ogImage, canonicalUrl, schema } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="SDL Domains" />
+    <meta name="keywords" content="phx.beauty, .beauty domain for sale, premium beauty domain Phoenix, Scottsdale medspa domain, luxury skincare domain, aesthetics clinic domain, Phoenix beauty brand" />
+
+    <SEO title={title} description={description} image={ogImage} url={canonicalUrl} />
+
+    {schema && <StructuredData schema={schema} />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://imagedelivery.net" />
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <!-- NAV -->
+    <nav class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50" id="navbar">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div class="flex items-center gap-x-3">
+            <div class="w-9 h-9 bg-slate-900 rounded-2xl flex items-center justify-center">
+              <span class="text-white font-bold text-2xl tracking-tighter">PHX</span>
+            </div>
+            <div class="font-semibold text-xl tracking-tighter text-slate-900">phx<span class="text-amber-700">.</span>beauty</div>
+          </div>
+
+          <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+            <a href="#why" class="nav-link text-slate-600 hover:text-slate-900">Why This Domain</a>
+            <a href="#perfect-for" class="nav-link text-slate-600 hover:text-slate-900">Perfect For</a>
+            <a href="#inquire" class="nav-link text-slate-600 hover:text-slate-900">Inquire</a>
+          </div>
+
+          <div class="flex items-center gap-x-3">
+            <a href="https://sdl.contact" target="_blank"
+               class="hidden md:inline text-xs px-4 py-2 border border-slate-300 hover:bg-slate-100 rounded-3xl font-medium text-slate-600 transition-colors">
+              SDL Portfolio
+            </a>
+            <button id="cta-nav-btn"
+                    class="px-6 py-2.5 bg-slate-900 hover:bg-black text-white text-sm font-semibold rounded-3xl transition-all active:scale-[0.985]">
+              Make an Offer
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-100">
+      <div class="max-w-5xl mx-auto px-6 py-16">
+        <!-- Primary CTA -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-x-2 bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-3xl mb-6">
+            <div class="w-1.5 h-1.5 bg-amber-500 rounded-full"></div>
+            <span class="text-xs font-semibold tracking-[1.5px] text-amber-800">DOMAIN ACQUISITION</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl tracking-tighter font-semibold heading-serif text-slate-900">
+            Interested in acquiring<br class="hidden md:block" />
+            <span class="text-amber-700">phx.beauty</span>?
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+            This premium short .beauty domain is available for acquisition by qualified buyers.
+            phx.beauty delivers instant local recognition in the Phoenix / Scottsdale metro,
+            exact-match .beauty industry positioning, and a strong foundation for luxury medspa,
+            skincare, aesthetics, or wellness brands.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="mailto:sales@desertrich.com?subject=Inquiry%3A%20phx.beauty%20Domain%20Acquisition&body=I%20am%20interested%20in%20acquiring%20phx.beauty.%20Please%20send%20more%20information%20regarding%20pricing%20and%20next%20steps."
+               class="inline-flex items-center gap-x-2 px-8 py-4 bg-slate-900 hover:bg-black text-white font-semibold rounded-3xl text-base transition-all active:scale-[0.985] shadow-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              sales@desertrich.com
+            </a>
+            <button id="copy-email-btn"
+                    class="px-6 py-4 border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium rounded-3xl text-sm transition-all">
+              <span id="copy-label">Copy Email</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-slate-200 pt-10">
+          <div class="grid md:grid-cols-3 gap-10 text-sm">
+            <!-- About -->
+            <div class="md:col-span-2">
+              <div class="font-semibold text-slate-900 mb-3">About phx.beauty</div>
+              <p class="text-slate-600 leading-relaxed">
+                phx.beauty is a premium short .beauty domain optimized for the luxury beauty,
+                medspa, aesthetics, and wellness industry in the Phoenix / Scottsdale metropolitan
+                area. Part of the SDL Domains portfolio of premium Arizona-focused digital assets.
+              </p>
+            </div>
+            <!-- Links -->
+            <div>
+              <div class="font-semibold text-slate-900 mb-3">SDL Portfolio</div>
+              <ul class="space-y-2">
+                <li><a href="https://sdl.contact" target="_blank" class="text-amber-700 hover:text-amber-800">sdl.contact</a></li>
+                <li><a href="https://sdl.hair" target="_blank" class="text-amber-700 hover:text-amber-800">sdl.hair</a></li>
+                <li><a href="https://phx.beauty" class="text-amber-700 hover:text-amber-800">phx.beauty</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Legal Disclaimer -->
+          <div class="mt-10 pt-8 border-t border-slate-100">
+            <p class="text-xs text-slate-400 leading-relaxed max-w-4xl">
+              This website is for demonstration and informational purposes only. It does not constitute
+              an offer of services, a commitment to deploy, or a guarantee of outcomes. All statistics,
+              projections, and references to specific technologies are based on publicly available
+              information as of the date shown and are subject to change.
+            </p>
+          </div>
+
+          <!-- Copyright -->
+          <div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-y-3 text-xs text-slate-400">
+            <div>&copy; 2026 SDL Domains. All rights reserved. Phoenix / Scottsdale, Arizona.</div>
+            <div>Premium domains &bull; Serious inquiries only</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Nav CTA scroll
+      document.getElementById('cta-nav-btn')?.addEventListener('click', () => {
+        document.getElementById('inquire')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Navbar shadow on scroll
+      const nav = document.getElementById('navbar');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            nav.classList.add('shadow-sm');
+          } else {
+            nav.classList.remove('shadow-sm');
+          }
+        });
+      }
+
+      // Copy email to clipboard
+      document.getElementById('copy-email-btn')?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('sales@desertrich.com');
+          const label = document.getElementById('copy-label');
+          if (label) {
+            const original = label.textContent;
+            label.textContent = 'Copied!';
+            setTimeout(() => { label.textContent = original; }, 2000);
+          }
+        } catch {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = 'sales@desertrich.com';
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+        }
+      });
+    </script>
+  </body>
+</html>
