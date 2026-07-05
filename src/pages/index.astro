@@ -42,50 +42,96 @@ const structuredData = {
   schema={structuredData}
 >
   <!-- HERO -->
-  <header class="relative min-h-[620px] md:min-h-[680px] flex items-center overflow-hidden bg-slate-950">
-    <!-- Background -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf14abf6-727d-4088-5ad4-8812c6c3c000/public')">
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/30"></div>
+  <header class="hero relative min-h-[min(100svh,720px)] md:min-h-[680px] flex items-center overflow-hidden bg-slate-950">
+    <div class="hero-parallax" aria-hidden="true">
+      <div class="hero-parallax__image-wrap" id="hero-parallax-wrap">
+        <img
+          id="hero-parallax-image"
+          class="hero-parallax__image"
+          src="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf14abf6-727d-4088-5ad4-8812c6c3c000/public"
+          alt=""
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <div class="hero-parallax__overlay"></div>
     </div>
 
-    <div class="relative max-w-5xl mx-auto px-6 pt-8 md:pt-0">
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 py-24 md:py-0">
       <div class="max-w-3xl">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-3xl mb-8">
-          <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
-          <span class="text-xs font-semibold tracking-[1.5px] text-white/90">PREMIUM .BEAUTY DOMAIN &bull; PHOENIX / SCOTTSDALE</span>
+        <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 sm:px-4 py-1.5 rounded-3xl mb-6 sm:mb-8 max-w-full">
+          <div class="w-1.5 h-1.5 shrink-0 bg-emerald-400 rounded-full animate-pulse"></div>
+          <span class="text-[10px] sm:text-xs font-semibold tracking-[1px] sm:tracking-[1.5px] text-white/90 leading-tight">PREMIUM .BEAUTY DOMAIN &bull; PHOENIX / SCOTTSDALE</span>
         </div>
 
         <h1 class="text-white">
           <span class="block domain-name">phx.beauty</span>
         </h1>
 
-        <p class="mt-4 max-w-lg text-2xl text-white/90 tracking-tight">
-          The premium short domain for luxury beauty,<br />medspas &amp; aesthetics in the Phoenix metro.
+        <p class="mt-3 sm:mt-4 max-w-lg text-lg sm:text-xl md:text-2xl text-white/95 tracking-tight leading-snug">
+          The premium short domain for luxury beauty, medspas &amp; aesthetics in the Phoenix metro.
         </p>
 
-        <div class="mt-9 flex flex-wrap gap-4">
+        <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
           <a href="#inquire"
-             class="px-10 py-4 bg-white text-slate-900 hover:bg-amber-50 font-semibold rounded-3xl text-base transition-all active:scale-[0.985] shadow-xl">
+             class="w-full sm:w-auto text-center px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-slate-900 hover:bg-amber-50 font-semibold rounded-3xl text-base transition-all active:scale-[0.985] shadow-xl">
             Inquire to Purchase
           </a>
           <a href="#why"
-             class="px-8 py-4 border border-white/30 hover:bg-white/10 text-white font-semibold rounded-3xl text-base transition-all">
+             class="w-full sm:w-auto text-center px-8 py-3.5 sm:py-4 border border-white/30 hover:bg-white/10 text-white font-semibold rounded-3xl text-base transition-all">
             Why phx.beauty
           </a>
         </div>
 
-        <div class="mt-8 flex items-center gap-x-6 text-xs text-white/60">
-          <div class="flex items-center gap-x-2">
-            <span class="font-mono">PHOENIX &bull; SCOTTSDALE</span>
-          </div>
-          <div class="w-px h-3 bg-white/30"></div>
+        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-x-6 text-xs text-white/70">
+          <div class="font-mono">PHOENIX &bull; SCOTTSDALE</div>
+          <div class="hidden sm:block w-px h-3 bg-white/30"></div>
           <div>Short &bull; Brandable &bull; Exact-match .beauty</div>
         </div>
       </div>
     </div>
   </header>
+
+  <script>
+    function initHeroParallax() {
+      const wrap = document.getElementById('hero-parallax-wrap');
+      const image = document.getElementById('hero-parallax-image');
+      const hero = document.querySelector('.hero');
+
+      if (!wrap || !image || !hero) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      const strength = isMobile ? 0.12 : 0.22;
+
+      let ticking = false;
+
+      const update = () => {
+        const rect = hero.getBoundingClientRect();
+        const scrollProgress = Math.min(Math.max(-rect.top / (rect.height || 1), 0), 1);
+        const offset = scrollProgress * rect.height * strength;
+        image.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
+        ticking = false;
+      };
+
+      const onScroll = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    }
+
+    initHeroParallax();
+  </script>
 
   <!-- TRUST / QUICK STATS -->
   <div class="border-b border-slate-200 bg-white">
