@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { title, description, image, url } = Astro.props;
-const canonicalUrl = url || 'https://phx.beauty/';
+const canonicalUrl = url || new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = image || 'https://imagedelivery.net/placeholder/phx-beauty-og/1200x630';
 ---
 
