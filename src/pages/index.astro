@@ -1,36 +1,71 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const productImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf14abf6-727d-4088-5ad4-8812c6c3c000/public';
+const productUrl = 'https://phx.beauty/';
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "phx.beauty",
   "description": "Premium short .beauty domain for luxury beauty, medspa, skincare, and aesthetics in the Phoenix / Scottsdale market.",
-  "url": "https://phx.beauty/",
+  "url": productUrl,
+  "image": [productImage],
+  "sku": "phx.beauty",
   "brand": {
     "@type": "Brand",
     "name": "SDL Domains"
   },
   "category": "Digital Asset",
   "audience": {
-    "@type": "BusinessAudience",
-    "geographicArea": {
-      "@type": "City",
-      "name": "Phoenix/Scottsdale",
-      "addressRegion": "AZ",
-      "addressCountry": "US"
-    }
+    "@type": "PeopleAudience",
+    "suggestedMinAge": 18
   },
   "offers": {
     "@type": "Offer",
+    "url": productUrl,
     "availability": "https://schema.org/InStock",
-    "price": "0",
+    "itemCondition": "https://schema.org/NewCondition",
+    "price": "8000",
     "priceCurrency": "USD",
+    "priceValidUntil": "2027-08-23",
     "seller": {
       "@type": "Organization",
       "name": "SDL Domains",
       "email": "sales@desertrich.com",
       "url": "https://sdl.contact"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "USD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "US"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 5,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "US",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
     }
   }
 };
@@ -39,6 +74,7 @@ const structuredData = {
 <Layout
   title="phx.beauty | Premium Short .beauty Domain for Luxury Beauty &amp; Aesthetics • Phoenix/Scottsdale"
   description="phx.beauty — A short, premium, geo-relevant .beauty domain perfect for a luxury medspa, skincare brand, aesthetics clinic, or high-end beauty destination in the Phoenix / Scottsdale market. Serious inquiries only."
+  ogImage={productImage}
   schema={structuredData}
 >
   <!-- HERO -->
