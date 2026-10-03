@@ -4,11 +4,13 @@ export interface JsonLdSchema {
 }
 
 interface Props {
-  schema: JsonLdSchema;
+  schema: JsonLdSchema | JsonLdSchema[];
 }
 
 const { schema } = Astro.props;
-const schemaStr = JSON.stringify(schema, null, 2);
+const schemas = Array.isArray(schema) ? schema : [schema];
 ---
 
-<script type="application/ld+json" set:html={schemaStr}></script>
+{schemas.map((s) => (
+  <script type="application/ld+json" set:html={JSON.stringify(s)}></script>
+))}

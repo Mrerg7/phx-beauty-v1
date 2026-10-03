@@ -4,25 +4,53 @@ interface Props {
   description: string;
   image?: string;
   url?: string;
+  keywords?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image, url } = Astro.props;
-const canonicalUrl = url || new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = image || 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf14abf6-727d-4088-5ad4-8812c6c3c000/public';
+const { title, description, image, url, keywords, canonicalPath, noindex = false } = Astro.props;
+const site = "https://phx.beauty";
+const canonicalUrl = url || new URL(canonicalPath ?? Astro.url.pathname, site).toString();
+const ogImage =
+  image || "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf14abf6-727d-4088-5ad4-8812c6c3c000/public";
+const favicon =
+  "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/13cb5545-0561-4483-2a18-228c2ad98d00/public";
 ---
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+{keywords && <meta name="keywords" content={keywords} />}
+<meta name="author" content="SDL Domains" />
+<meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
+<meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="color-scheme" content="dark light" />
+<meta name="google-site-verification" content="Aa3T73OgbVj0wrFcs409Nkvu80J19uMITyn2Fyvovd4" />
 <link rel="canonical" href={canonicalUrl} />
+
+<!-- Performance: preconnect + dns-prefetch + hero preload -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://imagedelivery.net" crossorigin />
+<link rel="dns-prefetch" href="https://imagedelivery.net" />
+<link rel="preload" as="image" href={ogImage} fetchpriority="high" />
+
+<link rel="icon" type="image/png" href={favicon} />
+<link rel="apple-touch-icon" href={favicon} />
+<link rel="manifest" href="/manifest.webmanifest" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="phx.beauty" />
+<meta property="og:locale" content="en_US" />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
+<meta property="og:image:secure_url" content={ogImage} />
+<meta property="og:image:alt" content="phx.beauty — premium short .beauty domain for Phoenix luxury beauty" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
